@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles/index.css'
@@ -5,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './app';
 import '@rainbow-me/rainbowkit/styles.css';
 
-// import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { WagmiConfig, configureChains, createConfig, } from 'wagmi';
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
@@ -22,12 +22,12 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'Decentraise',
-  projectId: '5afac3e3f44c172e0d2bd06eeae672fd',
+  projectId: `${process.env.VITE_REACT_APP_CLOUDINARY_PRESET}`,
   chains
 });
 
 const wagmiConfig = createConfig({
-  // autoConnect: true,
+  autoConnect: true,
   publicClient,
   connectors
 })

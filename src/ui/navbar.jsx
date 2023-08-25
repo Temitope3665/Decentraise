@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "../components/ui/button";
 import { CREATE_STAGE_1, EXPLORE_PROJECTS, HOME_URL } from "../helper/paths";
-import { useContext} from "react";
-import { UserContext } from "../app";
+// import { useContext} from "react";
+// import { UserContext } from "../app";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from "wagmi";
 
 const navlinks = [
   { title: "Explore", href: EXPLORE_PROJECTS },
@@ -10,8 +11,11 @@ const navlinks = [
 ];
 
 const Navbar = () => {
-  const {account, connectWallet} = useContext(UserContext);
+  const { address } = useAccount();
+  // const {account, connectWallet} = useContext(UserContext);
   const { pathname } = useLocation();
+
+  console.log(address, '-->address')
 
 
   return (
@@ -42,7 +46,10 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-        {
+        <div>
+          <ConnectButton accountStatus="avatar" />
+        </div>
+        {/* {
           account ? 
           <Button
             variant="outline"
@@ -57,7 +64,7 @@ const Navbar = () => {
           >
             Connect wallet
           </Button>
-        }
+        } */}
 
       </div>
     </nav>

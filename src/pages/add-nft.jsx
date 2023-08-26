@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { handleUploadImage } from "../functions";
 import { UserContext } from "../app";
 import { createCampaign } from "../utils/DecentRaise";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const AddNFtPage = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AddNFtPage = () => {
   const [nftSymbol, setNftSymbol] = useState('');
   const [progress, setProgress] = useState();
   const [image, setImage] = useState();
-  const {account, connectWallet} = useContext(UserContext);
+  const {account} = useContext(UserContext);
 
 
   const handleChangeImage = (file) => {
@@ -92,7 +93,8 @@ const AddNFtPage = () => {
             {
               account ? 
               <Button className="px-12 bg-fuchsia-500" onClick={() => create()}>Create campaign</Button> :
-              <Button className="px-12 bg-fuchsia-500" onClick={() => connectWallet()}>Connect wallet to create</Button>
+              <ConnectButton accountStatus="avatar" />
+              // <Button className="px-12 bg-fuchsia-500" onClick={() => connectWallet()}>Connect wallet to create</Button>
             }
           </div>
         </div>

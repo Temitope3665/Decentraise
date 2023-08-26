@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { CREATE_STAGE_1, EXPLORE_PROJECTS, HOME_URL } from "../helper/paths";
-// import { useContext} from "react";
-// import { UserContext } from "../app";
+import { useContext} from "react";
+import { UserContext } from "../app";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount } from "wagmi";
+import { Button } from "../components/ui/button";
 
 const navlinks = [
   { title: "Explore", href: EXPLORE_PROJECTS },
@@ -11,17 +11,14 @@ const navlinks = [
 ];
 
 const Navbar = () => {
-  const { address } = useAccount();
-  // const {account, connectWallet} = useContext(UserContext);
+  const { ensName } = useContext(UserContext);
   const { pathname } = useLocation();
-
-  console.log(address, '-->address')
 
 
   return (
-    <nav className="px-24 -mt-2">
+    <nav className="px-20 -mt-2">
       <div className="flex items-center justify-between w-full">
-        <div className="w-[60vw] flex items-center">
+        <div className="w-[40vw] flex items-center">
           <Link to={HOME_URL}>
             <div className="flex items-center w-[22vw]">
               <img src="/decent-logo.svg" alt="logo" width={40} />
@@ -46,26 +43,17 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-        <div>
+        <div className="flex">
           <ConnectButton accountStatus="avatar" />
+          {/* {ensName && ( */}
+            <div className="ml-4">
+              <Button disabled className="border items-center">
+                <p className="text-[10px] text-white mr-2">Ens name:</p>
+                {ensName || '-'}
+                </Button>
+            </div>
+          {/* )} */}
         </div>
-        {/* {
-          account ? 
-          <Button
-            variant="outline"
-            className="border-l-fuchsia-200 border-[0.5px] bg-transparent"
-          >
-            {account}
-          </Button> :
-          <Button
-            variant="outline"
-            className="border-l-fuchsia-200 border-[0.5px] bg-transparent"
-            onClick={() => connectWallet()}
-          >
-            Connect wallet
-          </Button>
-        } */}
-
       </div>
     </nav>
   );

@@ -7,19 +7,29 @@ import PayoutsPage from "../pages/payouts";
 import AddNFtPage from "../pages/add-nft";
 import ExploreProjects from "../pages/explore-projects";
 import Project from "../pages/project";
-import { createContext, useState } from "react";
-import { connectWallet } from "../utils/DecentRaise";
+import { createContext, useEffect, useState } from "react";
+import { useAccount, useEnsName } from "wagmi";
 
 export const UserContext = createContext();
 
 const App = () => {
   const [account, setAccount] = useState("");
-  const user =  {account, connectWallet: connect}
+  const [ensName, setEnsName] = useState("");
+  const { address } = useAccount();
 
-  async function connect() {
-    const _account = await connectWallet();
-    setAccount(_account);
-  }
+  const { data, isFetched } = useEnsName({
+    address: address,
+  });
+  
+  const user =  {account, ensName};
+  
+  useEffect(() => {
+    setAccount(address);
+  }, [address]);
+
+  useEffect(() => {
+    setEnsName(data);
+  }, [isFetched]);
 
   return (
     <UserContext.Provider value={user}>

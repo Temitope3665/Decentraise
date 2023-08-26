@@ -4,8 +4,12 @@ import AuthLayout from "../layout";
 import ProjectCard, { ReasonCard } from "../ui/card";
 import { projects, reasons } from "../utils";
 import { CREATE_STAGE_1, EXPLORE_PROJECTS } from "../helper/paths";
+import { UserContext } from "../app";
+import { useContext } from "react";
 
-const Home = () => (
+const Home = () => {
+  const {account} = useContext(UserContext);
+return (
   <AuthLayout>
     <h1 className="text-[70px] font-bold mt-36 mx-auto text-center">
       Fund your idea
@@ -24,14 +28,15 @@ const Home = () => (
           Explore projects
         </Button>
       </Link>
-      <Link to={CREATE_STAGE_1}>
+      {account && ( <Link to={CREATE_STAGE_1}>
         <Button
           variant="outline"
           className=" bg-fuchsia-500 border-none h-[50px] px-8 text-primary font-bold ml-6"
         >
           Start a project
         </Button>
-      </Link>
+      </Link>)}
+
     </div>
 
     <div className="px-24 mt-12">
@@ -100,5 +105,6 @@ const Home = () => (
     </div>
   </AuthLayout>
 );
+        };
 
 export default Home;

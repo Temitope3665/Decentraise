@@ -45,14 +45,12 @@ const Navbar = () => {
         </div>
         <div className="flex">
           <ConnectButton accountStatus="avatar" />
-          {/* {ensName && ( */}
             <div className="ml-4">
               <Button disabled className="border items-center">
                 <p className="text-[10px] text-white mr-2">Ens name:</p>
                 {ensName || '-'}
                 </Button>
             </div>
-          {/* )} */}
         </div>
       </div>
     </nav>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Route, Routes } from "react-router-dom";
 import { ADD_NFT, CREATE_CYCLE, CREATE_PAYOUTS, CREATE_STAGE_1, EXPLORE_PROJECTS, HOME_URL } from "../helper/paths";
 import Home from "../pages";

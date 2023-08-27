@@ -28,7 +28,7 @@ const CreateProjectPage = () => {
     const {
     handleSubmit,
     register,
-    formState: { errors, isDirty, isValid },
+    formState: { errors },
   } = useForm({
     mode: "onChange",
     resolver: yupResolver(CreateProjectSchema),
@@ -101,7 +101,7 @@ const CreateProjectPage = () => {
               </div>
             </div>
 
-                <Label htmlFor='goal' className='text-sm'>Goal(in Ether)</Label>
+                <Label htmlFor='goal' className='text-sm'>Goal(in AVAX)</Label>
                 <Input {...register("goal")} id="goal" placeholder="Amout to raise in ether" name="goal" className="mt-2 rounded-lg placeholder:text-xs" error={errors && errors.goal?.message} />
                 <ErrorText message={errors && errors.goal?.message} />
 

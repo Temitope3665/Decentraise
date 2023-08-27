@@ -5,7 +5,7 @@ import ProjectCard, { ReasonCard } from "../ui/card";
 import { reasons } from "../utils";
 import { CREATE_STAGE_1, EXPLORE_PROJECTS } from "../helper/paths";
 import { UserContext } from "../app";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useCampaignContext } from "../context/CampaignContext";
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
       </h1>
       <h3 className="mt-12 w-[50%] text-center mx-auto text-[14px] text-fuchsia-200">
         Join thousands of projects using Decentrainse to fund, operate, and
-        scale their ideas & communities transparently on Ethereum.
+        scale their ideas & communities transparently on AVAX.
       </h3>
 
       <div className="w-[50%] mt-10 justify-center mx-auto flex">

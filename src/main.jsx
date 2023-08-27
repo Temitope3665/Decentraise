@@ -1,38 +1,34 @@
 /* eslint-disable no-undef */
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './styles/index.css'
-import { BrowserRouter } from 'react-router-dom'
-import App from './app';
-import '@rainbow-me/rainbowkit/styles.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles/index.css";
+import { BrowserRouter } from "react-router-dom";
+import App from "./app";
+import "@rainbow-me/rainbowkit/styles.css";
 
-import { publicProvider } from 'wagmi/providers/public';
-import { WagmiConfig, configureChains, createConfig, } from 'wagmi';
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import {
-  mainnet,
-  optimism,
-  goerli
-} from 'wagmi/chains';
+import { publicProvider } from "wagmi/providers/public";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
+import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
+import { avalancheFuji, avalanche } from "wagmi/chains";
 
 const { chains, publicClient } = configureChains(
-  [mainnet, optimism, goerli],
+  [avalancheFuji, avalanche],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'Decentraise',
+  appName: "Decentraise",
   projectId: `${process.env.VITE_REACT_APP_CLOUDINARY_PRESET}`,
-  chains
+  chains,
 });
 
 const wagmiConfig = createConfig({
   autoConnect: true,
   publicClient,
-  connectors
-})
+  connectors,
+});
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <WagmiConfig config={wagmiConfig}>
@@ -41,5 +37,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </RainbowKitProvider>
       </WagmiConfig>
     </BrowserRouter>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

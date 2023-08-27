@@ -17,16 +17,18 @@ const ProjectCard = ({ desc, title, volume, payment, imgUrl, projectId }) => {
           </h2>
           <p className="text-[11px] mt-2">{desc}</p>
 
-          <div className="flex w-full justify-between">
+          <div className="flex justify-between w-full">
             <div className="mt-4">
-              <p className="text-fuchsia-200 font-semibold text-[12px]">VOLUME</p>
-              <p className="font-bold">ETH {volume}</p>
+              <p className="text-fuchsia-200 font-semibold text-[12px]">
+                TARGET
+              </p>
+              <p className="font-bold">{volume} ETH</p>
             </div>
             <div className="mt-4">
               <p className="text-fuchsia-200 font-semibold text-[12px]">
-                PAYMENT
+                RAISED
               </p>
-              <p className="font-bold">{payment}</p>
+              <p className="font-bold">{payment} ETH</p>
             </div>
           </div>
         </div>
@@ -40,7 +42,9 @@ export default ProjectCard;
 export const ReasonCard = ({ icon, title, desc, color }) => {
   return (
     <div className={`${color} w-[20vw] rounded-lg py-8`}>
-      <div className="bg-[#17141D] rounded-full w-[50px] h-[50px] items-center justify-center flex mx-auto mb-4">{icon}</div>
+      <div className="bg-[#17141D] rounded-full w-[50px] h-[50px] items-center justify-center flex mx-auto mb-4">
+        {icon}
+      </div>
       <h3 className="font-bold text-primary text-[22px]">{title}</h3>
       <p className="text-primary text-[12px] px-3">{desc}</p>
     </div>

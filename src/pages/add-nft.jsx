@@ -9,7 +9,7 @@ import CreateProjectLevel from "../layout/create-project-level";
 import { useNavigate } from "react-router-dom";
 import { handleUploadImage } from "../functions";
 import { UserContext } from "../app";
-import { createCampaign } from "../utils/DecentRaise";
+import { useCampaignContext } from "../context/CampaignContext";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { HOME_URL } from "../helper/paths";
 
@@ -17,24 +17,24 @@ const AddNFtPage = () => {
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(false);
   const [uploadResponse, setUploadResponse] = useState(null);
-  const [nftSymbol, setNftSymbol] = useState('');
+  const [nftSymbol, setNftSymbol] = useState("");
   const [progress, setProgress] = useState();
   const [image, setImage] = useState();
-  const {account} = useContext(UserContext);
-
+  const { account } = useContext(UserContext);
+  const { createCampaign } = useCampaignContext();
 
   const handleChangeImage = (file) => {
-    handleUploadImage(file[0], setProgress)
-    .then((res) => setUploadResponse(res));
+    handleUploadImage(file[0], setProgress).then((res) =>
+      setUploadResponse(res)
+    );
   };
 
-  const create = async() => {
-    const campaign = JSON.parse(localStorage.getItem('user_project'));
+  const create = async () => {
+    const campaign = JSON.parse(localStorage.getItem("user_project"));
     campaign.token_symbol = nftSymbol;
     await createCampaign(campaign);
     navigate(HOME_URL);
-  }
-
+  };
 
   return (
     <AuthLayout>
@@ -61,7 +61,16 @@ const AddNFtPage = () => {
                   Upload NFT Image *
                 </Label>
                 <div className="-mt-14">
-                <FileInput handleChangeFile={handleChangeImage} setFiles={setImage} files={image} progress={progress} fileName={uploadResponse && uploadResponse.original_filename || ''} progressClassName="text-black" />
+                  <FileInput
+                    handleChangeFile={handleChangeImage}
+                    setFiles={setImage}
+                    files={image}
+                    progress={progress}
+                    fileName={
+                      (uploadResponse && uploadResponse.original_filename) || ""
+                    }
+                    progressClassName="text-black"
+                  />
                 </div>
 
                 <TextInput
@@ -75,10 +84,19 @@ const AddNFtPage = () => {
                 />
 
                 <div className="flex justify-between w-full my-10">
-                  <Button className="px-12 text-black bg-transparent border border-fuchsia-500" onClick={() => setIsShown(false)}>
+                  <Button
+                    className="px-12 text-black bg-transparent border border-fuchsia-500"
+                    onClick={() => setIsShown(false)}
+                  >
                     Cancel
                   </Button>
-                  <Button className="px-12 bg-fuchsia-500" disabled={ !nftSymbol || !uploadResponse} onClick={create}>Add NFT</Button>
+                  <Button
+                    className="px-12 bg-fuchsia-500"
+                    disabled={!nftSymbol || !uploadResponse}
+                    onClick={create}
+                  >
+                    Add NFT
+                  </Button>
                 </div>
               </Dialog>
 
@@ -90,14 +108,19 @@ const AddNFtPage = () => {
           </div>
 
           <div className="flex justify-between w-full my-10">
-            <Button className="px-12 bg-transparent border border-fuchsia-500" onClick={() => navigate(-1)}>
+            <Button
+              className="px-12 bg-transparent border border-fuchsia-500"
+              onClick={() => navigate(-1)}
+            >
               Back
             </Button>
-            {
-              account ? 
-              <Button className="px-12 bg-fuchsia-500" onClick={() => create()}>Create campaign</Button> :
+            {account ? (
+              <Button className="px-12 bg-fuchsia-500" onClick={() => create()}>
+                Create campaign
+              </Button>
+            ) : (
               <ConnectButton accountStatus="avatar" />
-            }
+            )}
           </div>
         </div>
       </div>

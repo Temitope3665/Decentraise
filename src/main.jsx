@@ -12,13 +12,16 @@ import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
   mainnet,
   optimism,
-  goerli
+  goerli,
+  arbitrum, arbitrumGoerli, arbitrumNova,
+  bscTestnet,
 } from 'wagmi/chains';
 
 const { chains, publicClient } = configureChains(
-  [mainnet, optimism, goerli],
+  [mainnet, optimism, goerli, bscTestnet, arbitrum, arbitrumGoerli, arbitrumNova],
   [publicProvider()]
 );
+
 
 const { connectors } = getDefaultWallets({
   appName: 'Decentraise',

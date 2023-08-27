@@ -50,9 +50,9 @@ const CreateProjectPage = () => {
 
   const submitForm = (data) => {
     console.log(data);
-    // const payload = { ...data, logo: logoResponse?.secure_url, cover_image: coverImageResponse?.secure_url };
-    // localStorage.setItem('user_project', JSON.stringify({ ...prevData, ...payload }));
-    // navigate(ADD_NFT);
+    const payload = { ...data, logo: logoResponse?.secure_url, cover_image: coverImageResponse?.secure_url };
+    localStorage.setItem('user_project', JSON.stringify({ ...prevData, ...payload }));
+    navigate(ADD_NFT);
   }
 
   return (

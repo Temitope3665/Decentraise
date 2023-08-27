@@ -2,13 +2,22 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import AuthLayout from "../layout";
 import ProjectCard, { ReasonCard } from "../ui/card";
-import { projects, reasons } from "../utils";
+import { reasons } from "../utils";
 import { CREATE_STAGE_1, EXPLORE_PROJECTS } from "../helper/paths";
 import { UserContext } from "../app";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { getCampaigns } from "../utils/DecentRaise";
 
 const Home = () => {
   const {account} = useContext(UserContext);
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    init();
+  }, []);
+  const init = async() => {
+    const _campaigns = await getCampaigns();
+    setProjects(_campaigns);
+  }
 return (
   <AuthLayout>
     <h1 className="text-[70px] font-bold mt-36 mx-auto text-center">

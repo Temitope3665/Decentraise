@@ -11,6 +11,7 @@ import { handleUploadImage } from "../functions";
 import { UserContext } from "../app";
 import { createCampaign } from "../utils/DecentRaise";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { HOME_URL } from "../helper/paths";
 
 const AddNFtPage = () => {
   const navigate = useNavigate();
@@ -31,7 +32,9 @@ const AddNFtPage = () => {
     const campaign = JSON.parse(localStorage.getItem('user_project'));
     campaign.token_symbol = nftSymbol;
     await createCampaign(campaign);
+    navigate(HOME_URL);
   }
+
 
   return (
     <AuthLayout>
@@ -94,7 +97,6 @@ const AddNFtPage = () => {
               account ? 
               <Button className="px-12 bg-fuchsia-500" onClick={() => create()}>Create campaign</Button> :
               <ConnectButton accountStatus="avatar" />
-              // <Button className="px-12 bg-fuchsia-500" onClick={() => connectWallet()}>Connect wallet to create</Button>
             }
           </div>
         </div>

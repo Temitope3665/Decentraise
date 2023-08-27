@@ -22,7 +22,7 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'Decentraise',
-  projectId: `${process.env.VITE_REACT_APP_CLOUDINARY_PRESET}`,
+  projectId: `${process.env.REACT_APP_PROJECT_ID}`,
   chains
 });
 

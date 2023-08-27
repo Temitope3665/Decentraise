@@ -19,7 +19,10 @@ export const CampaignProvider = ({ children }) => {
 
   const decentRaise = getContract({
     abi: DecentRaiseAbi,
-    address: DecentRaiseAddress,
+    address:
+      publicClient.chain.network == "avalancheFuji"
+        ? DecentRaiseAddress
+        : "0xE3dD43D11380A81D5af0BBd7DB3BeDd4340E0B83",
     publicClient,
     walletClient,
   });

@@ -9,10 +9,10 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { publicProvider } from "wagmi/providers/public";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
-import { avalancheFuji, avalanche, goerli } from "wagmi/chains";
+import { avalancheFuji, goerli, arbitrumGoerli } from "wagmi/chains";
 
 const { chains, publicClient } = configureChains(
-  [avalancheFuji, avalanche, goerli],
+  [avalancheFuji, arbitrumGoerli, goerli],
   [publicProvider()]
 );
 

@@ -25,6 +25,7 @@ const App = () => {
   const [account, setAccount] = useState("");
   const [ensName, setEnsName] = useState("");
   const { address } = useAccount();
+  console.log({ address });
 
   const { data, isFetched } = useEnsName({
     address: address,
@@ -38,6 +39,7 @@ const App = () => {
   }, [address]);
 
   useEffect(() => {
+    console.log("ens", data);
     setEnsName(data);
   }, [isFetched]);
 

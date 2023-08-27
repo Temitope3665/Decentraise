@@ -79,7 +79,7 @@ const Home = () => {
       <div className="my-20 text-center">
         <h1 className="font-bold text-[50px]">Why Decentraise ?</h1>
         <p className="mt-8">
-          Open a full-featured Ethereum treasury with programmable spending in
+          Open a full-featured AVAX treasury with programmable spending in
           minutes.
         </p>
 

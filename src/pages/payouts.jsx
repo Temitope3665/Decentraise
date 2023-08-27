@@ -19,8 +19,8 @@ const PayoutsPage = () => {
         <div className="mt-14">
           <h1 className="font-bold text-[22px]">Payouts</h1>
           <p className="text-[12px] mt-2 pr-12">
-            Pay out ETH from your project to the Ethereum wallets or Juicebox
-            projects of your choice. ETH which isn&apos;t paid out will be available
+            Pay out AVAX from your project to the AVAX wallets or Juicebox
+            projects of your choice. AVAX which isn&apos;t paid out will be available
             for token redemptions, or for use in future cycles. Payouts reset
             each cycle.
           </p>

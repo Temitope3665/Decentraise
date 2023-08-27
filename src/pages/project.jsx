@@ -76,13 +76,13 @@ const Project = () => {
             <div className="text-center">
               <p className="text-sm text-fuchsia-300">Target</p>
               <h2 className="font-bold text-[30px] mt-3">
-                {project ? project.goal : 0.0}ETH
+                {project ? project.goal : 0.0}AVAX
               </h2>
             </div>
             <div className="text-center">
               <p className="text-sm text-fuchsia-300">Raise</p>
               <h2 className="font-bold text-[30px] mt-3">
-                {project ? project.totalContributions : 0.0}ETH
+                {project ? project.totalContributions : 0.0}AVAX
               </h2>
             </div>
             <div className="text-center">

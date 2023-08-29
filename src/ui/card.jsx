@@ -22,13 +22,13 @@ const ProjectCard = ({ desc, title, volume, payment, imgUrl, projectId }) => {
               <p className="text-fuchsia-200 font-semibold text-[12px]">
                 TARGET
               </p>
-              <p className="font-bold">{volume} AVAX</p>
+              <p className="font-bold">{volume} ETH</p>
             </div>
             <div className="mt-4">
               <p className="text-fuchsia-200 font-semibold text-[12px]">
                 RAISED
               </p>
-              <p className="font-bold">{payment} AVAX</p>
+              <p className="font-bold">{payment} ETH</p>
             </div>
           </div>
         </div>

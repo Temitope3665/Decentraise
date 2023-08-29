@@ -13,7 +13,7 @@ const ExploreProjects = () => {
       </h1>
       <h3 className="mt-12 w-[50%] text-center mx-auto text-[14px] text-fuchsia-200">
         View thousands of projects using Decentrainse to fund, operate, and
-        scale their ideas & communities transparently on AVAX.
+        scale their ideas & communities transparently on Ethereum.
       </h3>
 
       <div className="px-24 mt-12">
@@ -54,7 +54,7 @@ const ExploreProjects = () => {
       <div className="my-20 text-center">
         <h1 className="font-bold text-[50px]">Why Decentraise ?</h1>
         <p className="mt-8">
-          Open a full-featured AVAX treasury with programmable spending in
+          Open a full-featured Ethereum treasury with programmable spending in
           minutes.
         </p>
 

@@ -76,7 +76,7 @@ export const reasons = [
   {
     icon: <Zap />,
     title: 'Battle tested',
-    desc: 'Decentraise is reliable, open-source, audited, and has been battle-tested by more than 1,000 projects raising over 50,000 AVAX.',
+    desc: 'Decentraise is reliable, open-source, audited, and has been battle-tested by more than 1,000 projects raising over 50,000 ETH.',
     color: 'bg-[#EE6F3A]',
     id: 2,
   },
@@ -97,7 +97,7 @@ export const reasons = [
   {
     icon: <Blocks />,
     title: 'Extensible',
-    desc: "Safe, Snapshot, or even on-chain governance: Decentraise uses simple standards and works with all of your favorite AVAX tools.",
+    desc: "Safe, Snapshot, or even on-chain governance: Decentraise uses simple standards and works with all of your favorite Ethereum tools.",
     color: 'bg-[#FFBB45]',
     id: 5
   },

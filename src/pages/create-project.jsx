@@ -102,7 +102,7 @@ const CreateProjectPage = () => {
             </div>
 
                 <Label htmlFor='goal' className='text-sm'>Goal(in AVAX)</Label>
-                <Input {...register("goal")} id="goal" placeholder="Amout to raise in AVAX" name="goal" className="mt-2 rounded-lg placeholder:text-xs" error={errors && errors.goal?.message} />
+                <Input {...register("goal")} id="goal" placeholder="Amout to raise in ether" name="goal" className="mt-2 rounded-lg placeholder:text-xs" error={errors && errors.goal?.message} />
                 <ErrorText message={errors && errors.goal?.message} />
 
                 <Label htmlFor='duration' className='text-sm'>Duration</Label>

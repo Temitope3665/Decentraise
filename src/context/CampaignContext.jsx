@@ -3,8 +3,6 @@ import { formatEther, getContract, parseEther } from "viem";
 import { usePublicClient, useWalletClient } from "wagmi";
 import { DecentRaiseAbi } from "./DecentRaiseAbi";
 
-const DecentRaiseAddress = "0x4F3fC920d14229ECF6eD13E2c5ea75AbBc396FE9";
-
 const CampaignContext = createContext();
 
 export const useCampaignContext = () => useContext(CampaignContext);

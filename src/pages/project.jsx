@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import AuthLayout from "../layout";
 import TextInput from "../ui/text-input";
 import { Button } from "../components/ui/button";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCampaignContext } from "../context/CampaignContext";
 import { useAccount } from "wagmi";
+import { HOME_URL } from "../helper/paths";
 
 const Project = () => {
   const [project, setProject] = useState();
@@ -18,13 +19,18 @@ const Project = () => {
   });
   const { contribute, getCampaign } = useCampaignContext();
   const { isConnected } = useAccount();
+  const navigate = useNavigate();
 
   useEffect(() => {
     init();
   }, []);
 
   const init = async () => {
-    const campaign = await getCampaign(projectId);
+    try {
+      const campaign = await getCampaign(projectId);
+    } catch (err) {
+      navigate(HOME_URL);
+    }
     setProject(campaign);
     timestampToDateCountdown(new Date(campaign.deadline));
   };

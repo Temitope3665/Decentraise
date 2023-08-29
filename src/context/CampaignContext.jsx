@@ -17,43 +17,65 @@ export const CampaignProvider = ({ children }) => {
     onSuccess: (data) => setWalletClient(data),
   });
 
-  const decentRaise = getContract({
-    abi: DecentRaiseAbi,
-    address: DecentRaiseAddress,
-    publicClient,
-    walletClient,
-  });
-
   useEffect(() => {
+    const chainId = publicClient.chain.id;
+    console.log("chain", chainId);
+    const contractAddress =
+      chainId == 43113
+        ? "0x4F3fC920d14229ECF6eD13E2c5ea75AbBc396FE9"
+        : chainId == 421613
+        ? "0x3e0c58Cc54C3199DB05d6937D26905c3Cb346c91"
+        : "0x14FF86D5f1A63B8d2bbEd252B2ee24E04877cDA5";
+    console.log(contractAddress);
     getCampaigns();
-  }, []);
+  }, [publicClient]);
 
   const getCampaign = async (campaignId) => {
-    try {
-      const _campaign = await decentRaise.read.campaigns([campaignId]);
-      const campaign = {
-        id: campaignId,
-        name: _campaign[0],
-        tagline: _campaign[1],
-        description: _campaign[2],
-        logo: _campaign[3],
-        projectLink: _campaign[4],
-        cover: _campaign[5],
-        twitter: _campaign[6],
-        goal: formatEther(_campaign[7]),
-        deadline: Number(_campaign[8]),
-        totalContributions: formatEther(_campaign[9]),
-        isCampaignActive: _campaign[10],
-        nftAddress: _campaign[11],
-      };
-      // console.log({ campaign });
-      return campaign;
-    } catch (err) {
-      window.alert(`Error: ${err.message}`);
-    }
+    const chainId = publicClient.chain.id;
+    const decentRaise = getContract({
+      abi: DecentRaiseAbi,
+      address:
+        chainId == 43113
+          ? "0x4F3fC920d14229ECF6eD13E2c5ea75AbBc396FE9"
+          : chainId == 421613
+          ? "0x3e0c58Cc54C3199DB05d6937D26905c3Cb346c91"
+          : "0x14FF86D5f1A63B8d2bbEd252B2ee24E04877cDA5",
+      publicClient,
+      walletClient,
+    });
+    const _campaign = await decentRaise.read.campaigns([campaignId]);
+    const campaign = {
+      id: campaignId,
+      name: _campaign[0],
+      tagline: _campaign[1],
+      description: _campaign[2],
+      logo: _campaign[3],
+      projectLink: _campaign[4],
+      cover: _campaign[5],
+      twitter: _campaign[6],
+      goal: formatEther(_campaign[7]),
+      deadline: Number(_campaign[8]),
+      totalContributions: formatEther(_campaign[9]),
+      isCampaignActive: _campaign[10],
+      nftAddress: _campaign[11],
+    };
+    // console.log({ campaign });
+    return campaign;
   };
 
   const getCampaigns = async () => {
+    const chainId = publicClient.chain.id;
+    const decentRaise = getContract({
+      abi: DecentRaiseAbi,
+      address:
+        chainId == 43113
+          ? "0x4F3fC920d14229ECF6eD13E2c5ea75AbBc396FE9"
+          : chainId == 421613
+          ? "0x3e0c58Cc54C3199DB05d6937D26905c3Cb346c91"
+          : "0x14FF86D5f1A63B8d2bbEd252B2ee24E04877cDA5",
+      publicClient,
+      walletClient,
+    });
     let _campaigns = [];
     let totalCampaigns = 0;
     try {
@@ -75,6 +97,18 @@ export const CampaignProvider = ({ children }) => {
   };
 
   const createCampaign = async (campaign) => {
+    const chainId = publicClient.chain.id;
+    const decentRaise = getContract({
+      abi: DecentRaiseAbi,
+      address:
+        chainId == 43113
+          ? "0x4F3fC920d14229ECF6eD13E2c5ea75AbBc396FE9"
+          : chainId == 421613
+          ? "0x3e0c58Cc54C3199DB05d6937D26905c3Cb346c91"
+          : "0x14FF86D5f1A63B8d2bbEd252B2ee24E04877cDA5",
+      publicClient,
+      walletClient,
+    });
     try {
       const {
         project_name,
@@ -88,7 +122,6 @@ export const CampaignProvider = ({ children }) => {
         goal,
         duration,
       } = campaign;
-      console.log(campaign);
       const txHash = await decentRaise.write.createCampaign([
         project_name,
         tagline,
@@ -111,6 +144,18 @@ export const CampaignProvider = ({ children }) => {
   };
 
   const contribute = async (campaignId, amount) => {
+    const chainId = publicClient.chain.id;
+    const decentRaise = getContract({
+      abi: DecentRaiseAbi,
+      address:
+        chainId == 43113
+          ? "0x4F3fC920d14229ECF6eD13E2c5ea75AbBc396FE9"
+          : chainId == 421613
+          ? "0x3e0c58Cc54C3199DB05d6937D26905c3Cb346c91"
+          : "0x14FF86D5f1A63B8d2bbEd252B2ee24E04877cDA5",
+      publicClient,
+      walletClient,
+    });
     try {
       const txHash = await decentRaise.write.contribute([campaignId], {
         value: parseEther(amount),
